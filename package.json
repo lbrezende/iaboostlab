@@ -1,0 +1,16 @@
+{
+  "name": "iaboostlab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Monorepo for bancointer, notionboost, fitnessboost",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
