@@ -1,4 +1,7 @@
 {
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "framework": null,
   "rewrites": [
     { "source": "/bancointer", "destination": "/bancointer/index.html" },
     { "source": "/notionboost", "destination": "/notionboost/index.html" },
