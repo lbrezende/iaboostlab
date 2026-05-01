@@ -1,13 +1,7 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false,
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
     { "source": "/bancointer", "destination": "/bancointer/index.html" },
-    { "source": "/bancointer/", "destination": "/bancointer/index.html" },
     { "source": "/notionboost", "destination": "/notionboost/index.html" },
-    { "source": "/notionboost/", "destination": "/notionboost/index.html" },
-    { "source": "/fitnessboost", "destination": "/fitnessboost/index.html" },
-    { "source": "/fitnessboost/", "destination": "/fitnessboost/index.html" }
+    { "source": "/fitnessboost", "destination": "/fitnessboost/index.html" }
   ]
 }
