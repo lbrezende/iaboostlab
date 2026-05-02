@@ -355,7 +355,7 @@ h1, h2, h3, h4 { margin: 0; font-weight: 600; }
   /* bottom: set by JS so sticky stops at hand palm */
   width: 262px;
   pointer-events: none;
-  z-index: 5;
+  z-index: 4;       /* above hand (3); below text/features (5) */
 }
 .solucoes__phone-sticky {
   position: sticky;
@@ -406,9 +406,12 @@ h1, h2, h3, h4 { margin: 0; font-weight: 600; }
   will-change: transform;
 }
 
-/* Make sure block text/features render above the hand image */
-.solucoes__block { position: relative; z-index: 6; }
-.solucoes__features { position: relative; z-index: 6; }
+/* Stacking: hand (3) < phone (4) < panel/features (5).
+   IMPORTANT: don't put z-index on .solucoes__block — its bg (cream-2 on PF)
+   would otherwise cover the phone. Only the inner content needs to be on top. */
+.solucoes__block { position: relative; }
+.solucoes__panel { position: relative; z-index: 5; }
+.solucoes__features { position: relative; z-index: 5; }
 
 @media (max-width: 1024px) {
   .solucoes__block--pf { grid-template-columns: 1fr; padding: 60px 32px; }
