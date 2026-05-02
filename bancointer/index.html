@@ -37,12 +37,26 @@
         </nav>
       </div>
       <div class="nav__right">
-        <button class="btn btn--ghost-light">Acesse sua conta <span class="caret">▾</span></button>
-        <button class="btn btn--orange">Abra sua conta grátis</button>
+        <button class="btn btn--ghost-light nav__login">Acesse sua conta <span class="caret">▾</span></button>
+        <button class="btn btn--orange nav__cta">Abra sua conta grátis</button>
         <button class="nav__globe" aria-label="Idioma">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
         </button>
+        <button class="nav__hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
+    </div>
+    <!-- Mobile drawer -->
+    <div class="nav__drawer" id="navDrawer" aria-hidden="true">
+      <a href="#">Finanças</a>
+      <a href="#">Shopping</a>
+      <a href="#">Loop</a>
+      <a href="#">Experiências</a>
+      <a href="#">Vida Global</a>
+      <hr/>
+      <button class="btn btn--ghost-dark">Acesse sua conta</button>
+      <button class="btn btn--orange">Abra sua conta grátis</button>
     </div>
   </header>
 

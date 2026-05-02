@@ -292,6 +292,7 @@ h1, h2, h3, h4 { margin: 0; font-weight: 600; }
   background: var(--cream);
   position: relative;
   padding: 112px 0 0;
+  overflow: hidden; /* clip the hand bleeding off the right edge */
 }
 .solucoes__heading {
   display: flex; align-items: flex-start; justify-content: space-between;
@@ -342,19 +343,27 @@ h1, h2, h3, h4 { margin: 0; font-weight: 600; }
 .solucoes__features li svg { flex-shrink: 0; }
 .solucoes__features li p { font-size: 16px; color: var(--gray-600); }
 
-/* Sticky iPhone wrapper - this is the key trick */
+/* Sticky iPhone — track + sticky inside */
+/* The track is the bounding box that defines where sticky behavior happens.
+   Both `left` and `bottom` are set by JS based on the actual hand image position
+   (so the sticky stops exactly at the hand's palm vertical center). */
 .solucoes__phone-wrap {
   position: absolute;
-  left: 50%; transform: translateX(-50%);
-  top: 223px; bottom: 0;
+  left: 50%;        /* JS overrides with palm-x */
+  transform: translateX(-50%);
+  top: 30px;        /* phone naturally centered inside PF cream block */
+  /* bottom: set by JS so sticky stops at hand palm */
   width: 262px;
   pointer-events: none;
   z-index: 5;
 }
 .solucoes__phone-sticky {
-  position: sticky; top: 90px;
-  height: 600px;
-  display: grid; place-items: center;
+  position: sticky;
+  top: calc(50vh - 270px); /* 270 = half iPhone height (540/2) → centers on viewport */
+  height: 540px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   pointer-events: auto;
 }
 
@@ -382,14 +391,24 @@ h1, h2, h3, h4 { margin: 0; font-weight: 600; }
   width: 100%; height: 100%; object-fit: cover; object-position: top;
 }
 
-/* Hand image */
+/* Hand image — anchored to the right with arm cutting at the right edge.
+   Sized so its palm aligns with the sticky phone center (JS reads the actual
+   palm-x and uses it to position the phone-wrap). */
 .solucoes__hand {
   position: absolute;
-  left: 50%; transform: translateX(-50%);
-  bottom: 0; width: 824px; max-width: 100%;
-  z-index: 4;
+  right: -60px;        /* arm bleeds off the right edge */
+  top: 950px;          /* sits below the PF block, alongside the PJ block */
+  width: 800px;        /* big enough for the arm to bleed past the right edge */
+  max-width: 70vw;
+  height: auto;
+  z-index: 3;
   pointer-events: none;
+  will-change: transform;
 }
+
+/* Make sure block text/features render above the hand image */
+.solucoes__block { position: relative; z-index: 6; }
+.solucoes__features { position: relative; z-index: 6; }
 
 @media (max-width: 1024px) {
   .solucoes__block--pf { grid-template-columns: 1fr; padding: 60px 32px; }
