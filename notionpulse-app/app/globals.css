@@ -52,3 +52,31 @@ html, body {
 /* Hide scrollbars on the dock */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
+
+/* Animated strikethrough for completed tasks.
+   Pure CSS — a pseudo-element line that draws from left to right. */
+.strike {
+  position: relative;
+  display: inline-block;
+  transition: color 280ms ease;
+}
+.strike::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 50%;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 350ms cubic-bezier(.4, 0, .2, 1);
+  pointer-events: none;
+}
+.strike--on { color: rgb(var(--muted)); }
+.strike--on::after { transform: scaleX(1); }
+
+/* Soft slide for tasks marked complete (and a brief flash) */
+@keyframes complete-flash {
+  0%   { background: rgba(59,130,246,0.18); }
+  100% { background: transparent; }
+}
+.task-row--done { animation: complete-flash 600ms ease-out; }

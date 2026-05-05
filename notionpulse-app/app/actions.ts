@@ -62,15 +62,18 @@ export async function deleteTask(id: string) {
 const UpdateTask = NewTask.partial().extend({ id: z.string() });
 export async function updateTask(input: z.input<typeof UpdateTask>) {
   const { id, ...rest } = UpdateTask.parse(input);
-  await prisma.task.update({
-    where: { id },
-    data: {
-      ...rest,
-      dueDate: rest.dueDate !== undefined
-        ? (rest.dueDate ? new Date(rest.dueDate) : null)
-        : undefined,
-    },
-  });
+  // Build a clean update payload: only include fields the caller actually
+  // sent, and coerce nullable string fields away from null where the schema
+  // doesn't allow it ("list" is non-null with a default).
+  const data: Record<string, unknown> = {};
+  if (rest.title !== undefined) data.title = rest.title;
+  if (rest.notes !== undefined) data.notes = rest.notes;
+  if (rest.priority !== undefined) data.priority = rest.priority;
+  if (rest.list !== undefined && rest.list !== null) data.list = rest.list;
+  if (rest.dueDate !== undefined) {
+    data.dueDate = rest.dueDate ? new Date(rest.dueDate) : null;
+  }
+  await prisma.task.update({ where: { id }, data });
   revalidatePath('/');
   revalidatePath(`/task/${id}`);
 }

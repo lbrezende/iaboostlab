@@ -1,6 +1,7 @@
 import { prisma } from '@/lib/prisma';
 import { HomeShell } from '@/components/home-shell';
 import { TaskRow } from '@/components/task-row';
+import { QuickAdd } from '@/components/quick-add';
 import type { Task } from '@prisma/client';
 
 export const dynamic = 'force-dynamic';
@@ -66,11 +67,13 @@ export default async function Page() {
           </div>
         </header>
 
+        <QuickAdd />
+
         {tasks.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-border p-10 text-center">
             <p className="text-sm font-medium">No tasks yet</p>
             <p className="mt-1 text-xs text-muted">
-              Tap the mic to capture your first task by voice.
+              Type above to add one, or tap the mic to capture by voice.
             </p>
           </div>
         ) : (
