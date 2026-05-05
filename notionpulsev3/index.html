@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Notion Pulse — concept v3 (dark)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Concept prototype with draggable bottom-sheet cards." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app">
+
+  <!-- Top status bar (decorative) -->
+  <div class="topbar">
+    <span class="topbar__icon" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/><polyline points="2 8.5 12 15 22 8.5"/><line x1="12" y1="22" x2="12" y2="15"/></svg>
+    </span>
+    <span class="topbar__line" aria-hidden="true"></span>
+    <span class="topbar__icon" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h4M17 12h4M12 3v4M12 17v4"/></svg>
+    </span>
+  </div>
+
+  <!-- ===== Screen: Home (chart hero + draggable cards) ===== -->
+  <section class="screen screen--home" data-screen="home">
+    <div class="hero hero--chart">
+      <div class="hero__inner">
+        <p class="label">TOTAL NET WORTH</p>
+        <h1 class="display-amount">$1,250,096<span class="cents">.05</span></h1>
+
+        <!-- Chart -->
+        <div class="chart" aria-hidden="true">
+          <div class="chart__bars">
+            <span style="--h:6%"></span>
+            <span style="--h:9%"></span>
+            <span style="--h:12%"></span>
+            <span style="--h:15%"></span>
+            <span style="--h:18%"></span>
+            <span style="--h:22%"></span>
+            <span style="--h:28%"></span>
+            <span style="--h:32%"></span>
+            <span style="--h:36%"></span>
+            <span style="--h:40%"></span>
+            <span style="--h:46%"></span>
+            <span style="--h:52%"></span>
+            <span style="--h:60%"></span>
+            <span style="--h:65%"></span>
+            <span style="--h:72%"></span>
+            <span style="--h:78%"></span>
+            <span style="--h:84%"></span>
+            <span style="--h:90%"></span>
+            <span style="--h:96%"></span>
+            <span style="--h:100%"></span>
+          </div>
+          <div class="chart__axis">
+            <span>TODAY</span><span>2035</span><span>2045</span><span>2055</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Draggable bottom sheet -->
+    <div class="sheet" id="sheet" data-state="half">
+      <div class="sheet__handle" id="sheetHandle">
+        <span></span>
+      </div>
+      <div class="sheet__content">
+
+        <article class="bigcard" data-go="detail">
+          <header class="bigcard__head">
+            <p class="label">AUTONOMOUS</p>
+            <p class="bigcard__amount">$125,000</p>
+          </header>
+          <p class="bigcard__sub">PERSONALIZED INDEX</p>
+        </article>
+
+        <div class="grid-2">
+          <article class="minicard">
+            <p class="label">WEEKLY DEPOSIT</p>
+            <p class="minicard__amount">$500</p>
+          </article>
+          <article class="minicard">
+            <p class="label">YTD RETURN</p>
+            <p class="minicard__amount minicard__amount--green">+10%</p>
+          </article>
+        </div>
+
+        <div class="row-collapse">
+          <p>7 EXTERNAL ACCOUNTS</p>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+
+        <article class="bigcard" data-go="detail">
+          <header class="bigcard__head">
+            <p class="label">DAILY SPEND</p>
+            <p class="bigcard__amount">$420</p>
+          </header>
+          <p class="bigcard__sub">ACROSS 14 TRANSACTIONS</p>
+        </article>
+
+        <div class="grid-2">
+          <article class="minicard">
+            <p class="label">CASH</p>
+            <p class="minicard__amount">$58,400</p>
+          </article>
+          <article class="minicard">
+            <p class="label">CRYPTO</p>
+            <p class="minicard__amount">$12,200</p>
+          </article>
+        </div>
+
+        <article class="bigcard">
+          <header class="bigcard__head">
+            <p class="label">RECENT ACTIVITY</p>
+          </header>
+          <ul class="activity">
+            <li><span>Apple Pay · Whole Foods</span><span>−$84.21</span></li>
+            <li><span>Uber</span><span>−$22.80</span></li>
+            <li><span>Salary deposit</span><span class="green">+$8,400.00</span></li>
+            <li><span>Spotify</span><span>−$11.99</span></li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- Voice button floats above the sheet -->
+    <button class="voice-btn" data-go="voice" aria-label="Voice">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h2M19 12h2M7 8v8M11 4v16M15 8v8"/></svg>
+    </button>
+  </section>
+
+  <!-- ===== Screen: Voice Listening ===== -->
+  <section class="screen screen--voice" data-screen="voice" hidden>
+    <div class="voice-bg"></div>
+    <div class="voice-content">
+      <p class="voice-msg">
+        Hello Alex,<br/>
+        Markets have been choppy,<br/>
+        but your Autonomous Index<br/>
+        is up 10% YTD.
+      </p>
+    </div>
+    <button class="voice-btn voice-btn--bottom" data-go="home" aria-label="Stop">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h2M19 12h2M7 8v8M11 4v16M15 8v8"/></svg>
+    </button>
+  </section>
+
+  <!-- ===== Screen: Investment Detail (slide to invest) ===== -->
+  <section class="screen screen--detail" data-screen="detail" hidden>
+    <div class="detail-hero">
+      <p class="label label--light">Investing your bonus</p>
+      <h2 class="detail-title">Autonomous Index</h2>
+      <p class="detail-desc">
+        We'll invest most of your bonus in a diversified mix of
+        stocks, alternatives, and hedges tailored to your goals.
+        We'll keep part in cash for flexibility.
+      </p>
+    </div>
+
+    <ul class="alloc">
+      <li>
+        <div>
+          <p class="label">CORE GROWTH FOUNDATION · 67%</p>
+          <p class="alloc__sub">L/S EQUITIES, COVERED CALL INCOME</p>
+        </div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </li>
+      <li>
+        <div>
+          <p class="label">UNCORRELATED ALTERNATIVES · 26%</p>
+          <p class="alloc__sub">CLOS, CRYPTO SLEEVE, COMMODITIES</p>
+        </div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </li>
+      <li>
+        <div>
+          <p class="label">CRISIS ALPHA · 4%</p>
+          <p class="alloc__sub">TAIL RISK HEDGE</p>
+        </div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </li>
+      <li>
+        <div>
+          <p class="label">SMART CASH · 3%</p>
+          <p class="alloc__sub">TREASURY BOX SPREAD</p>
+        </div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </li>
+    </ul>
+
+    <div class="transfer">
+      <p class="label">TRANSFER FROM ACCOUNT</p>
+      <div class="transfer__row">
+        <span>CHASE ····2248</span>
+        <span class="transfer__amount">$75,000</span>
+      </div>
+    </div>
+
+    <div class="slide-cta">
+      <div class="slide-track" id="slideTrack">
+        <button class="slide-thumb" id="slideThumb" aria-label="Slide to invest">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        </button>
+      </div>
+      <p class="slide-label">Slide to Invest</p>
+    </div>
+
+    <button class="back-pill" data-go="home" aria-label="Back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      Back
+    </button>
+  </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

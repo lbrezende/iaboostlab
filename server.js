@@ -4,7 +4,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 5011;
 
-const projects = ['bancointer', 'notionboost', 'fitnessboost'];
+const projects = ['bancointer', 'notionboost', 'fitnessboost', 'notionpulse', 'notionpulsev2', 'notionpulsev3'];
 
 projects.forEach((name) => {
   app.use(`/${name}`, express.static(path.join(__dirname, name)));

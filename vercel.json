@@ -5,6 +5,9 @@
   "redirects": [
     { "source": "/bancointer", "destination": "/bancointer/", "permanent": false },
     { "source": "/notionboost", "destination": "/notionboost/", "permanent": false },
-    { "source": "/fitnessboost", "destination": "/fitnessboost/", "permanent": false }
+    { "source": "/fitnessboost", "destination": "/fitnessboost/", "permanent": false },
+    { "source": "/notionpulse", "destination": "/notionpulse/", "permanent": false },
+    { "source": "/notionpulsev2", "destination": "/notionpulsev2/", "permanent": false },
+    { "source": "/notionpulsev3", "destination": "/notionpulsev3/", "permanent": false }
   ]
 }

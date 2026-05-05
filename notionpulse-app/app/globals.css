@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 255 255 255;
+  --fg: 17 24 39;
+  --muted: 107 114 128;
+  --primary: 59 130 246;
+  --primary-fg: 255 255 255;
+  --border: 229 231 235;
+  --card: 250 251 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: 10 10 10;
+    --fg: 245 245 245;
+    --muted: 156 163 175;
+    --primary: 96 165 250;
+    --primary-fg: 10 10 10;
+    --border: 39 39 42;
+    --card: 24 24 27;
+  }
+}
+
+html, body {
+  background: rgb(var(--bg));
+  color: rgb(var(--fg));
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+/* Recording-state pulse rings */
+@keyframes ring-pulse {
+  0%   { transform: scale(0.4); opacity: 0; }
+  20%  { opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+.ring-pulse { animation: ring-pulse 2.4s ease-out infinite; }
+
+/* Waveform bars */
+.wave-bar {
+  display: inline-block;
+  width: 4px;
+  margin: 0 1px;
+  background: currentColor;
+  border-radius: 4px;
+  transition: height 80ms linear;
+}
+
+/* Hide scrollbars on the dock */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }

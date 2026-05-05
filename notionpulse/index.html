@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Notion Pulse — voice-first tasks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Concept prototype: voice-first task app. Not affiliated with Notion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app">
+
+  <!-- ===== Splash ===== -->
+  <section class="screen screen--splash" data-screen="splash">
+    <div class="splash">
+      <div class="splash__deco" aria-hidden="true"></div>
+      <h1 class="splash__title">Notion Pulse</h1>
+      <p class="splash__sub">Voice-first tasks</p>
+      <div class="splash__dots"><span></span><span></span><span></span></div>
+    </div>
+  </section>
+
+  <!-- ===== Onboarding 1 ===== -->
+  <section class="screen screen--ob1" data-screen="ob1" hidden>
+    <div class="ob">
+      <header class="ob__head">
+        <div class="ob__progress" data-step="1">
+          <span class="active"></span><span></span><span></span><span></span>
+        </div>
+        <button class="link" data-go="home">Skip</button>
+      </header>
+      <div class="ob__art ob__art--1" aria-hidden="true">
+        <div class="circle"></div>
+        <div class="square"></div>
+      </div>
+      <div class="ob__body">
+        <h2>Say it. We organize it.</h2>
+        <p>Add tasks and lists using voice in seconds.</p>
+      </div>
+      <div class="ob__cta">
+        <button class="btn btn--primary" data-go="ob2">Enable microphone</button>
+        <button class="link link--center" data-go="ob2">Skip</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Onboarding 2 ===== -->
+  <section class="screen screen--ob2" data-screen="ob2" hidden>
+    <div class="ob">
+      <header class="ob__head">
+        <div class="ob__progress" data-step="2">
+          <span></span><span class="active"></span><span></span><span></span>
+        </div>
+        <button class="link" data-go="home">Skip</button>
+      </header>
+      <div class="ob__art ob__art--2" aria-hidden="true">
+        <div class="circle circle--lg"></div>
+        <div class="square square--rotate"></div>
+      </div>
+      <div class="ob__body">
+        <h2>Plan your day automatically</h2>
+        <p>Connect Google Calendar to suggest time blocks.</p>
+      </div>
+      <div class="ob__cta">
+        <button class="btn btn--primary" data-go="ob3">Connect Google Calendar</button>
+        <button class="link link--center" data-go="ob3">Not now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Onboarding 3 ===== -->
+  <section class="screen screen--ob3" data-screen="ob3" hidden>
+    <div class="ob">
+      <header class="ob__head">
+        <div class="ob__progress" data-step="3">
+          <span></span><span></span><span class="active"></span><span></span>
+        </div>
+        <button class="link" data-go="home">Skip</button>
+      </header>
+      <div class="ob__art ob__art--3" aria-hidden="true">
+        <div class="grid">
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+        </div>
+        <div class="grid-circle"></div>
+      </div>
+      <div class="ob__body">
+        <h2>Share lists with a friend</h2>
+        <p>Invite someone to view or edit shared checklists.</p>
+        <p class="ob__disclaimer">Concept only. Not affiliated with Notion.</p>
+      </div>
+      <div class="ob__cta">
+        <button class="btn btn--primary" data-go="home">Continue</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Home ===== -->
+  <section class="screen screen--home" data-screen="home" hidden>
+    <div class="home">
+      <header class="home__head">
+        <div>
+          <h2>Good morning, Gil</h2>
+          <p class="home__date" id="todayDate">Tuesday, April 22</p>
+        </div>
+        <div class="avatar" aria-label="Profile">G</div>
+      </header>
+
+      <section class="capture">
+        <p class="section-label">QUICK CAPTURE</p>
+        <button class="capture__btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3"/></svg>
+          <span>Tap to add by voice…</span>
+        </button>
+      </section>
+
+      <section class="task-group">
+        <p class="section-label">TODAY</p>
+        <ul class="tasks">
+          <li class="task task--done">
+            <button class="check check--done" aria-label="Done">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+            <span>Review Q2 presentation</span>
+          </li>
+          <li class="task" data-task="Call Alex about the trip">
+            <button class="check" aria-label="Mark complete"></button>
+            <span>Call Alex about the trip</span>
+          </li>
+          <li class="task" data-task="Buy groceries">
+            <button class="check" aria-label="Mark complete"></button>
+            <span>Buy groceries</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="task-group">
+        <p class="section-label">SCHEDULED</p>
+        <ul class="tasks">
+          <li class="task task--scheduled" data-task="Team standup">
+            <button class="check" aria-label="Mark complete"></button>
+            <div>
+              <span>Team standup</span>
+              <small>⏱ 10:00 AM</small>
+            </div>
+          </li>
+          <li class="task task--scheduled" data-task="Lunch with Sarah">
+            <button class="check" aria-label="Mark complete"></button>
+            <div>
+              <span>Lunch with Sarah</span>
+              <small>⏱ 12:30 PM</small>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="task-group">
+        <p class="section-label">NEXT UP</p>
+        <ul class="tasks">
+          <li class="task" data-task="Book hotel for Friday">
+            <button class="check" aria-label="Mark complete"></button>
+            <span>Book hotel for Friday</span>
+          </li>
+          <li class="task" data-task="Prepare slides for workshop">
+            <button class="check" aria-label="Mark complete"></button>
+            <span>Prepare slides for workshop</span>
+          </li>
+        </ul>
+      </section>
+
+      <button class="fab" aria-label="Add by voice" data-go="ob1">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3"/></svg>
+      </button>
+
+      <nav class="bottom-nav">
+        <button class="bottom-nav__item bottom-nav__item--active">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
+          <span>Today</span>
+        </button>
+        <button class="bottom-nav__item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+          <span>Lists</span>
+        </button>
+        <button class="bottom-nav__item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+          <span>Profile</span>
+        </button>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ===== Task Detail ===== -->
+  <section class="screen screen--detail" data-screen="detail" hidden>
+    <div class="detail">
+      <header class="detail__head">
+        <button class="link link--back" data-go="home">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          Back
+        </button>
+        <h2>Task</h2>
+        <span aria-hidden="true" class="detail__head-spacer"></span>
+      </header>
+      <div class="detail__body">
+        <div class="task-row">
+          <button class="check check--lg" aria-label="Mark complete"></button>
+          <p id="detailTitle">Call Alex about the trip</p>
+        </div>
+
+        <div class="field">
+          <label>Due date &amp; time</label>
+          <button class="field__input">
+            Tomorrow, 10:00 AM
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+
+        <div class="field">
+          <label>Priority</label>
+          <div class="priority">
+            <button class="priority__pill" data-priority="low">Low</button>
+            <button class="priority__pill priority__pill--active" data-priority="medium">Medium</button>
+            <button class="priority__pill" data-priority="high">High</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>List</label>
+          <button class="field__input">
+            <span class="dot dot--green"></span> Personal
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:auto"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+
+        <div class="field field--row">
+          <label>Repeat</label>
+          <label class="toggle">
+            <input type="checkbox" />
+            <span class="toggle__slider"></span>
+          </label>
+        </div>
+
+        <div class="field">
+          <label>Notes</label>
+          <textarea placeholder="Add any additional details..."></textarea>
+        </div>
+
+        <div class="detail__cta">
+          <button class="btn btn--primary">Save</button>
+          <button class="link link--center">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3"/></svg>
+            Edit by voice
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
